@@ -3,37 +3,47 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Website where you can find the weather in a given city"
+    />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-
-    <link
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-      rel="stylesheet"
-    />
   </head>
   <body>
     <div class="container">
-      <form class="form search-box js">
-        <i class="bx bxs-map"></i>
+      <form class="form search-box">
+        <i class="icon search-box__icon map-icon"></i>
         <input
           type="text"
           placeholder="enter your location"
-          class="search-box__input"
+          class="input search-box__input js-search-box-input"
         />
-        <button class="bx bx-search"></button>
+        <button
+          type="submit"
+          class="btn btn-search search-box__btn js-search-box-submit"
+        ></button>
       </form>
-      <div class="weather-box hidden">
-        <div class="box">
-          <p class="city-name">Kyiv</p>
-          <div class="weather-info">
-            <div class="weather">
-              <p class="temperature">0 <span>°</span></p>
-              <p class="description">Broken Clouds</p>
+      <div class="weather-box">
+        <div class="wrapper weather-box__wrapper">
+          <p class="weather-box__city city-name">Kyiv</p>
+          <div class="weather-info weather-box__weather-info">
+            <div class="wrapper weather-wrapper">
+              <p
+                class="temperature weather-info__temperature js-weather-info-temperature"
+              >
+                0 <span class="degree">°</span>
+              </p>
+              <p
+                class="description weather-info__description js-weather-info-description"
+              >
+                Broken Clouds
+              </p>
             </div>
           </div>
         </div>
         <div class="weather-details">
-          <div class="high-temp temp">
+          <div class="high-temp temp weather-details__high-temp">
             <div class="text">
               <p>H:</p>
               <div class="info-high-temp info">
@@ -46,7 +56,6 @@
             <div class="text">
               <p>L:</p>
               <div class="info-low-temp info">
-                \
                 <p>55<span>°</span></p>
               </div>
             </div>
