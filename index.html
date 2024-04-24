@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <forn class="search-box">
+        <i class="bx bxs-map"></i>
+        <input
+          type="text"
+          placeholder="enter your location"
+          class="search-box__input"
+        />
+        <button class="bx bx-search"></button>
+      </forn>
+      <div class="weather-box hidden">
+        <div class="box">
+          <p class="city-name">Kyiv</p>
+          <div class="weather-info">
+            <div class="weather">
+              <p class="temperature">0 <span>°</span></p>
+              <p class="description">Broken Clouds</p>
+            </div>
+          </div>
+        </div>
+        <div class="weather-details">
+          <div class="high-temp temp">
+            <div class="text">
+              <p>H:</p>
+              <div class="info-high-temp info">
+                <p>65<span>°</span></p>
+              </div>
+            </div>
+          </div>
+
+          <div class="low-temp temp">
+            <div class="text">
+              <p>L:</p>
+              <div class="info-low-temp info">
+                \
+                <p>55<span>°</span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script defer src="script.js"></script>
+  </body>
+</html>
