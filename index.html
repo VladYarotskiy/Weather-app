@@ -29,11 +29,19 @@
           <p class="weather-box__city city-name">Kyiv</p>
           <div class="weather-info weather-box__weather-info">
             <div class="wrapper weather-wrapper">
-              <p
-                class="temperature weather-info__temperature js-weather-info-temperature"
-              >
-                0 <span class="degree">°</span>
-              </p>
+              <div class="image-temp-wrapper">
+                <img
+                  class="weather-picture js-weather-picture"
+                  src="img/clear.png"
+                  alt="weather picture"
+                />
+                <p
+                  class="temperature weather-info__temperature js-weather-info-temperature"
+                >
+                  0 <span class="degree">°</span>
+                </p>
+              </div>
+
               <p
                 class="description weather-info__description js-weather-info-description"
               >
@@ -61,6 +69,14 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="not-found hidden">
+        <img
+          class="not-found__picture"
+          src="img/404.png"
+          alt="City not found"
+        />
+        <p class="not-found__description">Ooops! Location not found!</p>
       </div>
     </div>
     <script defer src="script.js"></script>

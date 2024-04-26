@@ -123,6 +123,7 @@ body {
   font-size: 64px;
   line-height: 1;
   font-weight: 400;
+  padding-right: 100px;
 }
 .temperature span {
   position: absolute;
@@ -140,6 +141,11 @@ body {
   -ms-flex-align: center;
   align-items: center;
   width: 100%;
+}
+.weather-picture {
+  width: 90px;
+  height: 60px;
+  padding-right: 10px;
 }
 .text {
   display: -webkit-box;
@@ -164,4 +170,20 @@ body {
 .hidden {
   display: none;
   visibility: hidden;
+}
+.image-temp-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.not-found {
+  padding-top: 20px;
+}
+.not-found__picture {
+  width: 100%;
+}
+.not-found__description {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 500;
 }
