@@ -26,18 +26,23 @@ ref.form.addEventListener('submit', async function (e) {
     ref.notFound.classList.remove('hidden');
     return;
   }
-
+  // geting future weather data from API
   const futureWeatherData = await getFutureWeatherData(e.target[0].value);
 
+  //creating an empty array for future weather to be render.
   const futureWeatherArr = [];
 
+  // Data from API cumming as an array of objects, that contain data about weather every 3 hours for the next 5 days.
+  // using map method choosing data about weather at 15:00 every day and pusing object in futureWeatherArr.
   futureWeatherData.list.map(el => {
     if (el.dt_txt.includes('15:00:00')) {
       futureWeatherArr.push(el);
     }
   });
   console.log(futureWeatherArr);
+
   futureWeatherArr.map(el => {
+    // Creating template literals string with HTML I whant to isert. need to refactor code. HOW TO CHANGE IMG SRC?
     const futureWeatherItemHTML = `
 <div class="future-weather__item">
   <p class="future-weather__day">${new Date(el.dt * 1000)
@@ -117,6 +122,7 @@ const renderView = function (weatherData) {
   ref.input.value = '';
 };
 
+// fetching API for gatting wheather data for next 5 days
 const getFutureWeatherData = async function (city) {
   try {
     const response = await fetch(
@@ -128,8 +134,3 @@ const getFutureWeatherData = async function (city) {
     console.log(err);
   }
 };
-
-console.log(
-  new Date(1714597200 * 1000).toDateString().slice(0, -12).toUpperCase()
-);
-// const date1 = date.toDateString().slice(0, -12).toUpperCase();
