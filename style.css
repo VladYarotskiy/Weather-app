@@ -18,6 +18,12 @@ body {
   -ms-flex-align: center;
   align-items: center;
   min-height: 100vh;
+  background-image: -o-radial-gradient(
+    10% 20%,
+    circle farthest-corner,
+    rgba(38, 51, 97, 1) 0%,
+    rgba(65, 143, 222, 1) 79%
+  );
   background-image: radial-gradient(
     circle farthest-corner at 10% 20%,
     rgba(38, 51, 97, 1) 0%,
@@ -173,8 +179,14 @@ body {
   visibility: hidden;
 }
 .image-temp-wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .not-found {
@@ -190,8 +202,14 @@ body {
 }
 
 .future-weather {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
 }
 .future-weather__item {
@@ -207,4 +225,5 @@ body {
 }
 .future-weather__temperature {
   text-align: center;
+  padding-left: 5px;
 }

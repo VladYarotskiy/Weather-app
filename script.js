@@ -24,10 +24,39 @@ ref.form.addEventListener('submit', async function (e) {
   if (weatherData.cod !== 200) {
     ref.weatherBox.classList.add('hidden');
     ref.notFound.classList.remove('hidden');
+    ref.futureWeatherBox.innerHTML = '';
     return;
   }
   // geting future weather data from API
   const futureWeatherData = await getFutureWeatherData(e.target[0].value);
+
+  //Rendering current weather
+  renderCurrentWeather(weatherData);
+
+  //Rendering future weather
+  renderFutureWeather(futureWeatherData);
+});
+
+const genereteFutureWeatherMurkup = function (data) {
+  return `
+  <div class="future-weather__item">
+    <p class="future-weather__day">${new Date(data.dt * 1000)
+      .toDateString()
+      .slice(0, -12)
+      .toUpperCase()}</p>
+    <img
+      class="future-weather__picture js-weather-picture"
+      src=${renderWeatherPicture(data)}
+      alt="weather picture"
+    />
+    <p class="future-weather__temperature">${parseInt(
+      data.main.temp
+    )}<span>°</span></p>
+  </div>`;
+};
+
+const renderFutureWeather = function (futureWeatherData) {
+  ref.futureWeatherBox.innerHTML = '';
 
   //creating an empty array for future weather to be render.
   const futureWeatherArr = [];
@@ -42,26 +71,14 @@ ref.form.addEventListener('submit', async function (e) {
   console.log(futureWeatherArr);
 
   futureWeatherArr.map(el => {
-    // Creating template literals string with HTML I whant to isert. need to refactor code. HOW TO CHANGE IMG SRC?
-    const futureWeatherItemHTML = `
-<div class="future-weather__item">
-  <p class="future-weather__day">${new Date(el.dt * 1000)
-    .toDateString()
-    .slice(0, -12)
-    .toUpperCase()}</p>
-  <img
-    class="future-weather__picture js-weather-picture"
-    src="img/clear.png"
-    alt="weather picture"
-  />
-  <p class="future-weather__temperature">${parseInt(el.main.temp)}</p>
-</div>`;
-    ref.futureWeatherBox.insertAdjacentHTML('beforeend', futureWeatherItemHTML);
+    ref.futureWeatherBox.insertAdjacentHTML(
+      'beforeend',
+      genereteFutureWeatherMurkup(el)
+    );
   });
-
-  //Rendering data
-  renderView(weatherData);
-});
+  futureWeatherArr.splice(0, futureWeatherArr.length);
+  console.log(futureWeatherArr);
+};
 
 const getWeatherData = async function (city) {
   try {
@@ -78,34 +95,27 @@ const getWeatherData = async function (city) {
 const renderWeatherPicture = function (weatherData) {
   switch (weatherData.weather[0].main) {
     case 'Clear':
-      ref.weatherPicture.src = 'img/clear.png';
-      break;
+      return 'img/clear.png';
     case 'Rain':
-      ref.weatherPicture.src = 'img/rain.png';
-      break;
+      return 'img/rain.png';
     case 'Drizzle':
-      ref.weatherPicture.src = 'img/rain.png';
-      break;
+      return 'img/rain.png';
     case 'Snow':
-      ref.weatherPicture.src = 'img/snow.png';
-      break;
+      return 'img/snow.png';
     case 'Clouds':
-      ref.weatherPicture.src = 'img/cloud.png';
-      break;
+      return 'img/cloud.png';
     case 'Mist':
-      ref.weatherPicture.src = 'img/mist.png';
-      break;
+      return 'img/mist.png';
     case 'Haze':
-      ref.weatherPicture.src = 'img/mist.png';
-      break;
+      return 'img/mist.png';
 
     default:
       break;
   }
 };
 
-const renderView = function (weatherData) {
-  renderWeatherPicture(weatherData);
+const renderCurrentWeather = function (weatherData) {
+  ref.weatherPicture.src = renderWeatherPicture(weatherData);
   ref.notFound.classList.add('hidden');
   ref.weatherBox.classList.remove('hidden');
   ref.temperature.innerHTML = `${parseInt(
